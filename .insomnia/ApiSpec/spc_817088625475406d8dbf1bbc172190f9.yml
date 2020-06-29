@@ -1,0 +1,41 @@
+_id: spc_817088625475406d8dbf1bbc172190f9
+contentType: yaml
+contents: |-
+  openapi: 3.0.0
+  info:
+    title: SPP revenue
+    version: 0.1.9
+  servers:
+    - url: https://members.clicboutic.info/api
+
+  components:
+    schemas:
+      RevenueResponse:
+        properties:
+          revenue:
+            type: number
+
+  paths:
+    /revenue:
+      get:
+        summary: Returns a revenue of an website.
+        parameters:
+          - in: query
+            name: 'token'
+            description: 'SPP Webhooks token'
+          - in: query
+            name: 'site_url'
+            description: 'Site URL'
+            example: 'store.fr'
+        responses:
+          '200':    # status code
+            description: A JSON with revenue data 
+            content:
+              application/json:
+                schema: 
+                  $ref: '#/components/schemas/RevenueResponse'
+created: 1593263745042
+fileName: SPP Integration
+modified: 1593428632376
+parentId: wrk_9c3d02ecb707441698242993eff4d36d
+type: ApiSpec
